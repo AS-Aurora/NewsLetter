@@ -13,7 +13,7 @@ class DocumentPageSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         if request is not None:
             return request.build_absolute_uri(obj.image.url)
-        return obj.image.url
+        return f'http://localhost:8000{obj.image.url}'
 
 class DocumentSerializer(serializers.ModelSerializer):
     pages = serializers.SerializerMethodField()
